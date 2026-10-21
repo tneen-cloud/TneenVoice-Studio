@@ -279,3 +279,31 @@ def test_sharded_snapshot_missing_a_shard_is_incomplete(tmp_path):
     assert not _has_asr_weights(str(snapshot))
     (snapshot / "m-2.safetensors").write_bytes(b"0")
     assert _has_asr_weights(str(snapshot))
+
+
+def test_weight_complete_snapshot_without_readme_is_accepted(tmp_path, hf_cache, monkeypatch):
+    """Hub IncompleteSnapshotError for missing docs must not block cloning.
+
+    Essential Whisper files alone are enough; README / .gitattributes are not
+    required for the ASR pipeline. Older hub clients refused such snapshots.
+    """
+    from omnivoice.models.omnivoice import _find_cached_reference_asr, _has_asr_weights
+
+    snapshot = _install_pinned(hf_cache, "openai/whisper-large-v3-turbo")
+    assert not (snapshot / "README.md").exists()
+    assert not (snapshot / ".gitattributes").exists()
+    assert _has_asr_weights(str(snapshot))
+
+    def _incomplete(*_a, **_k):
+        from huggingface_hub.errors import IncompleteSnapshotError
+
+        raise IncompleteSnapshotError(
+            "cached snapshot incomplete: missing .gitattributes, README.md",
+            str(snapshot),
+        )
+
+    monkeypatch.setattr(
+        "huggingface_hub.snapshot_download", _incomplete
+    )
+    found = _find_cached_reference_asr()
+    assert found == str(snapshot)

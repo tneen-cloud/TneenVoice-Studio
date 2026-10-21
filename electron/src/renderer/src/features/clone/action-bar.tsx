@@ -41,6 +41,7 @@ import {
   type CloneSettings,
 } from '@/lib/store/clone-settings';
 import { cn } from '@/lib/utils';
+import { DialectRouteHint } from '@/components/dialect-route-hint';
 import { EngineLanguagePicker } from './engine-language-picker';
 import { QualityControls } from './quality-controls';
 import { CloneDemoAction } from './clone-demo';
@@ -405,6 +406,7 @@ export function ActionBar() {
         </div>
       )}
       {error && <PipelineFailure className="mb-3" fallback={error} onDismiss={clearError} />}
+      <DialectRouteHint />
       <div className="flex flex-wrap items-center gap-3">
         <div className="flex items-center gap-1 rounded-lg bg-background/50 p-1 ring-1 ring-border/50">
           <EngineLanguagePicker />

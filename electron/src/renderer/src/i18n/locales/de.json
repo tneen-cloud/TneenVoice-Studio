@@ -461,6 +461,13 @@
     "voice_source": "Sprachquelle",
     "reference_audio": "Referenzaudio",
     "reference_hint": "Verwende 5–15 Sekunden klare Sprache.",
+    "recordGuide": {
+      "title": "Recording guide",
+      "readAloud": "Read aloud",
+      "tipsGeneric": "Quiet room, one speaker, 8–15 seconds, natural pace. Stay under 20s when you can.",
+      "tipsSomali": "Use Somali Latin spelling (c, x, q, dh, kh, sh). Quiet room, 8–15 seconds, natural pace.",
+      "tipsEgyptian": "Speak Egyptian colloquial (not formal MSA). Quiet room, 8–15 seconds, natural pace."
+    },
     "ref_usage_best_window": "Diese Engine nutzt bis zu {{seconds}} s – die beste Passage wird automatisch gewählt.",
     "ref_usage_head": "Diese Engine nutzt die ersten {{seconds}} s dieses Clips.",
     "ref_usage_long": "Länger als die empfohlenen {{seconds}} s. Der ganze Clip geht an die Engine.",
@@ -611,7 +618,12 @@
     "replace_reference": "Referenz ersetzen",
     "keep_reference": "Aktuelle Referenz behalten",
     "new_reference": "Neue Referenz: {{name}}",
-    "replace_reference_hint": "Beim Speichern wird das Referenzbeispiel dieser Stimme ersetzt. Die fixierte Aufnahme und die Bestätigung der eigenen Stimme werden zurückgesetzt, da der neue Clip von einer anderen Person stammen kann. Lass das Transkript leer, um den neuen Clip automatisch zu transkribieren."
+    "replace_reference_hint": "Beim Speichern wird das Referenzbeispiel dieser Stimme ersetzt. Die fixierte Aufnahme und die Bestätigung der eigenen Stimme werden zurückgesetzt, da der neue Clip von einer anderen Person stammen kann. Lass das Transkript leer, um den neuen Clip automatisch zu transkribieren.",
+    "dialectRoute": {
+      "somaliClone": "Somali + your reference → OmniVoice cloning (Somali orthography applied).",
+      "somaliTts": "Somali text → MMS Somali engine when installed (fluent TTS; add a reference to clone).",
+      "egyptian": "Egyptian Arabic → Lahgtna Egyptian OmniVoice when installed (supports cloning)."
+    }
   },
   "designWorkspace": {
     "title": "Designen",
@@ -1647,7 +1659,7 @@
     "toast_flushed": "Gespült – RAM {{ram}}G · VRAM {{vram}}G{{unloaded}}",
     "toast_model_unloaded": "· Modell entladen",
     "toast_flush_failed": "Spülung fehlgeschlagen: {{message}}",
-    "name": "VoiceStudio",
+    "name": "TneenVoice Studio",
     "version": "v{{version}}",
     "version_dev": "v{{version}} · Entwicklung",
     "tagline": "Klonen lokaler Stimmen. Nichts verlässt Ihre Maschine.",

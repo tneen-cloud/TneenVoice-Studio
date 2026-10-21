@@ -273,8 +273,8 @@
     "export_error": "Couldn't export the dictionary."
   },
   "app": {
-    "name": "VoiceStudio",
-    "tagline": "Open source voice cloning and workflow engine. Build local.",
+    "name": "TneenVoice Studio",
+    "tagline": "Open source voice cloning with fluent Somali TTS. Build local.",
     "coming_soon": "Coming soon",
     "version": "v{{version}}",
     "version_dev": "v{{version}} · Dev",
@@ -367,6 +367,18 @@
     "voice_kicker": "Voice",
     "reference_audio": "Reference audio",
     "reference_hint": "Use 5–15 seconds of clean speech.",
+    "recordGuide": {
+      "title": "Recording guide",
+      "readAloud": "Read aloud",
+      "tipsGeneric": "Quiet room, one speaker, 8–15 seconds, natural pace. Stay under 20s when you can.",
+      "tipsSomali": "Use Somali Latin spelling (c, x, q, dh, kh, sh). Quiet room, 8–15 seconds, natural pace.",
+      "tipsEgyptian": "Speak Egyptian colloquial (not formal MSA). Quiet room, 8–15 seconds, natural pace."
+    },
+    "dialectRoute": {
+      "somaliClone": "Somali + your reference → OmniVoice cloning (Somali orthography applied).",
+      "somaliTts": "Somali text → MMS Somali engine when installed (fluent TTS; add a reference to clone).",
+      "egyptian": "Egyptian Arabic → Lahgtna Egyptian OmniVoice when installed (supports cloning)."
+    },
     "ref_usage_best_window": "This engine uses up to {{seconds}}s — the best passage is picked automatically.",
     "ref_usage_head": "This engine uses the first {{seconds}}s of this clip.",
     "ref_usage_long": "Longer than the recommended {{seconds}}s. The whole clip is sent to the engine.",

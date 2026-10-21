@@ -413,6 +413,12 @@ def _find_cached_reference_asr() -> Optional[str]:
             except OSError:
                 continue
             for revision in revisions:
+                snap_dir = os.path.join(snapshots, revision)
+                # Hub may raise IncompleteSnapshotError when only docs
+                # (README / .gitattributes) are missing even though Whisper
+                # weights are complete — accept the on-disk dir by weight check.
+                if _has_asr_weights(snap_dir):
+                    return snap_dir
                 try:
                     found = snapshot_download(
                         repo,
@@ -420,7 +426,7 @@ def _find_cached_reference_asr() -> Optional[str]:
                         local_files_only=True,
                         cache_dir=root,
                     )
-                except (LocalEntryNotFoundError, ValueError):
+                except (LocalEntryNotFoundError, ValueError, OSError):
                     continue
                 if _has_asr_weights(found):
                     return found

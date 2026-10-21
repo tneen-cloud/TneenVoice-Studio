@@ -461,6 +461,13 @@
     "voice_source": "Stembron",
     "reference_audio": "Referentieaudio",
     "reference_hint": "Gebruik 5–15 seconden heldere spraak.",
+    "recordGuide": {
+      "title": "Recording guide",
+      "readAloud": "Read aloud",
+      "tipsGeneric": "Quiet room, one speaker, 8–15 seconds, natural pace. Stay under 20s when you can.",
+      "tipsSomali": "Use Somali Latin spelling (c, x, q, dh, kh, sh). Quiet room, 8–15 seconds, natural pace.",
+      "tipsEgyptian": "Speak Egyptian colloquial (not formal MSA). Quiet room, 8–15 seconds, natural pace."
+    },
     "ref_usage_best_window": "Deze engine gebruikt tot {{seconds}} s — de beste passage wordt automatisch gekozen.",
     "ref_usage_head": "Deze engine gebruikt de eerste {{seconds}} s van deze clip.",
     "ref_usage_long": "Langer dan de aanbevolen {{seconds}} s. De hele clip gaat naar de engine.",
@@ -611,7 +618,12 @@
     "replace_reference": "Referentie vervangen",
     "keep_reference": "Huidige referentie behouden",
     "new_reference": "Nieuwe referentie: {{name}}",
-    "replace_reference_hint": "Opslaan vervangt het referentievoorbeeld van deze stem. De vastgezette opname en de verificatie van je eigen stem worden gewist, omdat de nieuwe clip van een andere spreker kan zijn. Laat het transcript leeg om de nieuwe clip automatisch te transcriberen."
+    "replace_reference_hint": "Opslaan vervangt het referentievoorbeeld van deze stem. De vastgezette opname en de verificatie van je eigen stem worden gewist, omdat de nieuwe clip van een andere spreker kan zijn. Laat het transcript leeg om de nieuwe clip automatisch te transcriberen.",
+    "dialectRoute": {
+      "somaliClone": "Somali + your reference → OmniVoice cloning (Somali orthography applied).",
+      "somaliTts": "Somali text → MMS Somali engine when installed (fluent TTS; add a reference to clone).",
+      "egyptian": "Egyptian Arabic → Lahgtna Egyptian OmniVoice when installed (supports cloning)."
+    }
   },
   "designWorkspace": {
     "title": "Ontwerpen",
@@ -1647,7 +1659,7 @@
     "toast_flushed": "Gespoeld — RAM {{ram}}G · VRAM {{vram}}G{{unloaded}}",
     "toast_model_unloaded": "· model onbeladen",
     "toast_flush_failed": "Spoelen mislukt: {{message}}",
-    "name": "VoiceStudio",
+    "name": "TneenVoice Studio",
     "version": "v{{version}}",
     "version_dev": "v{{version}} · Ontwikkeling",
     "tagline": "Lokaal stemklonen. Niets verlaat uw machine.",

@@ -465,6 +465,13 @@
     "voice_source": "Голосове джерело",
     "reference_audio": "Еталонне аудіо",
     "reference_hint": "Використовуйте 5–15 секунд чистого мовлення.",
+    "recordGuide": {
+      "title": "Recording guide",
+      "readAloud": "Read aloud",
+      "tipsGeneric": "Quiet room, one speaker, 8–15 seconds, natural pace. Stay under 20s when you can.",
+      "tipsSomali": "Use Somali Latin spelling (c, x, q, dh, kh, sh). Quiet room, 8–15 seconds, natural pace.",
+      "tipsEgyptian": "Speak Egyptian colloquial (not formal MSA). Quiet room, 8–15 seconds, natural pace."
+    },
     "ref_usage_best_window": "Цей рушій використовує до {{seconds}} с — найкращий фрагмент вибирається автоматично.",
     "ref_usage_head": "Цей рушій використовує перші {{seconds}} с цього кліпу.",
     "ref_usage_long": "Довше за рекомендовані {{seconds}} с. Кліп повністю передається рушію.",
@@ -615,7 +622,12 @@
     "replace_reference": "Замінити зразок",
     "keep_reference": "Залишити поточний зразок",
     "new_reference": "Новий зразок: {{name}}",
-    "replace_reference_hint": "Під час збереження зразок цього голосу буде замінено. Закріплений дубль і підтвердження власного голосу скидаються, бо новий кліп може належати іншій людині. Залиште розшифровку порожньою, щоб новий кліп розшифрувався автоматично."
+    "replace_reference_hint": "Під час збереження зразок цього голосу буде замінено. Закріплений дубль і підтвердження власного голосу скидаються, бо новий кліп може належати іншій людині. Залиште розшифровку порожньою, щоб новий кліп розшифрувався автоматично.",
+    "dialectRoute": {
+      "somaliClone": "Somali + your reference → OmniVoice cloning (Somali orthography applied).",
+      "somaliTts": "Somali text → MMS Somali engine when installed (fluent TTS; add a reference to clone).",
+      "egyptian": "Egyptian Arabic → Lahgtna Egyptian OmniVoice when installed (supports cloning)."
+    }
   },
   "designWorkspace": {
     "title": "Створити",
@@ -1651,7 +1663,7 @@
     "toast_flushed": "Очищено — RAM {{ram}}G · VRAM {{vram}}G{{unloaded}}",
     "toast_model_unloaded": "· модель ненавантажена",
     "toast_flush_failed": "Помилка очищення: {{message}}",
-    "name": "VoiceStudio",
+    "name": "TneenVoice Studio",
     "version": "v{{version}}",
     "version_dev": "v{{version}} · Розробка",
     "tagline": "Клонування локального голосу. Ніщо не покидає вашу машину.",

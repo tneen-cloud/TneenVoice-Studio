@@ -113,9 +113,9 @@ export function SupportSettings() {
 
       <div className="support-community" role="group" aria-label={t('support.other_ways')}>
         <span>{t('support.other_ways')}</span>
-        <ExternalLink href="https://github.com/debpalash/VoiceStudio">
+        <ExternalLink href="https://voicestudio.tneen.cloud">
           <StarIcon aria-hidden="true" />
-          {t('support.star_github')}
+          voicestudio.tneen.cloud
         </ExternalLink>
         <ExternalLink href={DISCORD_URL}>
           <MessagesSquareIcon aria-hidden="true" />

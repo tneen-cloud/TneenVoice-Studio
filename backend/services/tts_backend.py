@@ -2330,6 +2330,200 @@ class KittenTTSBackend(TTSBackend):
                 + self._split_to_token_budget(onnx, right, voice, speed))
 
 
+# ── MMS Somali (Meta Massively Multilingual Speech VITS) ────────────────────
+
+
+class MmsSomaliBackend(TTSBackend):
+    """facebook/mms-tts-som — Somali-trained VITS reader (no cloning).
+
+    OmniVoice zero-shot only weakly approximates Somali. This engine loads
+    Meta's dedicated Somali MMS checkpoint so Somali text is synthesised by a
+    model trained on Somali speech. Single fixed speaker; ``ref_audio`` /
+    ``instruct`` are ignored. Weights are CC-BY-NC 4.0 — university/demo use
+    is fine; commercial redistribution of the model is not.
+    """
+
+    id = "mms-somali"
+    display_name = "MMS Somali (fluent Somali TTS, no cloning)"
+    gpu_compat = ("cuda", "cpu")
+    supports_cloning = False
+    language_display_names = {"so": "Somali"}
+    DEFAULT_REPO = "facebook/mms-tts-som"
+    _DEFAULT_SAMPLE_RATE = 16000
+
+    def __init__(self):
+        self._model = None
+        self._tokenizer = None
+        self._sample_rate = self._DEFAULT_SAMPLE_RATE
+        self._device = "cpu"
+
+    @classmethod
+    def is_available(cls) -> tuple[bool, str]:
+        try:
+            import transformers  # noqa: F401
+            return True, "ready"
+        except ImportError as e:
+            return False, f"transformers not installed: {e}"
+
+    @property
+    def sample_rate(self) -> int:
+        return int(self._sample_rate or self._DEFAULT_SAMPLE_RATE)
+
+    @property
+    def supported_languages(self) -> list[str]:
+        return ["so"]
+
+    def model_identity(self) -> Optional[str]:
+        return os.environ.get("OMNIVOICE_MMS_SOMALI_MODEL", self.DEFAULT_REPO).strip() or self.DEFAULT_REPO
+
+    def _ensure_loaded(self):
+        if self._model is not None:
+            return
+        from transformers import AutoTokenizer, VitsModel
+
+        checkpoint = self.model_identity()
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+        logger.info("Loading MMS Somali from %s on %s", checkpoint, device)
+
+        def _load():
+            model = VitsModel.from_pretrained(checkpoint)
+            tokenizer = AutoTokenizer.from_pretrained(checkpoint)
+            return model, tokenizer
+
+        model, tokenizer = _retry_once_with_fresh_hf_client(_load, "MMS Somali")
+        model = model.to(device)
+        model.eval()
+        self._model = model
+        self._tokenizer = tokenizer
+        self._device = device
+        rate = getattr(getattr(model, "config", None), "sampling_rate", None)
+        if isinstance(rate, int) and rate > 0:
+            self._sample_rate = rate
+
+    def generate(self, text: str, **kw) -> torch.Tensor:
+        self._check_language(kw.get("language"))
+        if not (text or "").strip():
+            raise TTSInputError("MMS Somali: send at least one word of Somali text.")
+        self._ensure_loaded()
+        assert self._model is not None and self._tokenizer is not None
+        inputs = self._tokenizer(text.strip(), return_tensors="pt")
+        inputs = {k: v.to(self._device) for k, v in inputs.items()}
+        with torch.inference_mode():
+            wav = self._model(**inputs).waveform
+        if isinstance(wav, torch.Tensor):
+            out = wav.detach().float().cpu()
+        else:
+            import numpy as np
+            out = torch.from_numpy(np.asarray(wav)).float()
+        if out.ndim == 1:
+            out = out.unsqueeze(0)
+        elif out.ndim == 2 and out.shape[0] > 1:
+            out = out.mean(dim=0, keepdim=True)
+        elif out.ndim == 3:
+            out = out.squeeze(0)
+            if out.ndim == 2 and out.shape[0] > 1:
+                out = out.mean(dim=0, keepdim=True)
+        return out
+
+
+# ── Egyptian OmniVoice (Lahgtna fine-tune) ──────────────────────────────────
+
+
+class EgyptianOmniVoiceBackend(TTSBackend):
+    """Egyptian colloquial TTS via Lahgtna OmniVoice fine-tune (arz).
+
+    Uses ``ehabnegm/lahgtna-omnivoice-egyptian-v3`` when cached/installed.
+    Falls back to unavailable until the user installs that snapshot — never
+    wipes the default k2-fsa/OmniVoice weights.
+    """
+
+    id = "egyptian-omnivoice"
+    display_name = "Egyptian Arabic (Lahgtna OmniVoice, arz)"
+    instruct_vocabulary = "tags"
+    supports_cloning = True
+    supports_voice_design = False
+    gpu_compat = ("cuda", "cpu")
+    language_display_names = {"arz": "Egyptian Arabic", "ar": "Arabic"}
+    DEFAULT_REPO = "ehabnegm/lahgtna-omnivoice-egyptian-v3"
+    _DEFAULT_SAMPLE_RATE = 24000
+
+    def __init__(self):
+        self._model = None
+
+    @classmethod
+    def is_available(cls) -> tuple[bool, str]:
+        try:
+            import omnivoice.models.omnivoice  # noqa: F401
+            return True, "ready"
+        except Exception as e:
+            return False, f"omnivoice package missing: {e}"
+
+    @classmethod
+    def weights_ready(cls) -> bool:
+        """True when the Egyptian snapshot is already in the HF cache."""
+        try:
+            from huggingface_hub import snapshot_download
+            from huggingface_hub.errors import LocalEntryNotFoundError
+
+            repo = os.environ.get("OMNIVOICE_EGYPTIAN_MODEL", cls.DEFAULT_REPO).strip() or cls.DEFAULT_REPO
+            snapshot_download(repo, local_files_only=True)
+            return True
+        except Exception:
+            return False
+
+    @property
+    def sample_rate(self) -> int:
+        if self._model is None:
+            return self._DEFAULT_SAMPLE_RATE
+        return int(getattr(self._model, "sampling_rate", self._DEFAULT_SAMPLE_RATE) or self._DEFAULT_SAMPLE_RATE)
+
+    @property
+    def supported_languages(self) -> list[str]:
+        return ["arz", "ar"]
+
+    def model_identity(self) -> Optional[str]:
+        return os.environ.get("OMNIVOICE_EGYPTIAN_MODEL", self.DEFAULT_REPO).strip() or self.DEFAULT_REPO
+
+    def _ensure_loaded(self):
+        if self._model is not None:
+            return
+        from omnivoice.models.omnivoice import OmniVoice
+
+        repo = self.model_identity()
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+        dtype = torch.float16 if device == "cuda" else torch.float32
+        logger.info("Loading Egyptian OmniVoice from %s on %s", repo, device)
+
+        def _load():
+            return OmniVoice.from_pretrained(repo, device_map=device, dtype=dtype)
+
+        self._model = _retry_once_with_fresh_hf_client(_load, "Egyptian OmniVoice")
+
+    def generate(self, text: str, **kw) -> torch.Tensor:
+        self._check_language(kw.get("language") or "arz")
+        self._ensure_loaded()
+        assert self._model is not None
+        lang = kw.get("language") or "arz"
+        # Model card: pass arz; feed raw Egyptian (normalizer strips tashkeel).
+        audio = self._model.generate(
+            text=text,
+            language="arz" if str(lang).lower() in ("egyptian arabic", "egyptian", "arz", "ar", "arabic") else lang,
+            ref_audio=kw.get("ref_audio"),
+            ref_text=kw.get("ref_text"),
+            instruct=kw.get("instruct"),
+        )
+        if isinstance(audio, torch.Tensor):
+            wav = audio.detach().float().cpu()
+        else:
+            import numpy as np
+            wav = torch.from_numpy(np.asarray(audio)).float()
+        if wav.ndim == 1:
+            wav = wav.unsqueeze(0)
+        elif wav.ndim == 2 and wav.shape[0] > 1:
+            wav = wav.mean(dim=0, keepdim=True)
+        return wav
+
+
 # ── MLX-Audio (mac-ARM engine multiplexer) ──────────────────────────────────
 
 
@@ -3404,6 +3598,8 @@ _REGISTRY: dict[str, type[TTSBackend]] = _LazyRegistry({
     "omnivoice":     OmniVoiceBackend,
     "cosyvoice":     CosyVoiceBackend,
     "kittentts":     KittenTTSBackend,
+    "mms-somali":    MmsSomaliBackend,
+    "egyptian-omnivoice": EgyptianOmniVoiceBackend,
     "mlx-audio":     MLXAudioBackend,
     "voxcpm2":       VoxCPM2Backend,
     "moss-tts-nano": MossTTSNanoBackend,
@@ -3432,6 +3628,8 @@ _INSTALL_HINTS: dict[str, str] = {
     "omnivoice-subprocess": "No extra install; uses the host OmniVoice install. Opt in with OMNIVOICE_TTS_BACKEND=omnivoice-subprocess (same model in a killable sidecar, for unattended reliability).",
     "cosyvoice":     "git clone --recursive FunAudioLLM/CosyVoice + pip install -r requirements.txt + SoX",
     "kittentts":     "pip install kittentts  (ONNX, CPU-only, ~80 MB)",
+    "mms-somali":    "Install facebook/mms-tts-som from Model Catalogue (Transformers VITS, Somali-only, ~150 MB; CC-BY-NC)",
+    "egyptian-omnivoice": "Install ehabnegm/lahgtna-omnivoice-egyptian-v3 from Model Catalogue (Egyptian OmniVoice fine-tune)",
     "mlx-audio":     "pip install mlx-audio  (Apple Silicon only)",
     "voxcpm2":       'pip install "voxcpm>=2.0.3"  (floor: 2.0.3 fixed Apple-Silicon audio quality; CPU/MPS supported, CUDA recommended for speed)',
     "moss-tts-nano": "git clone OpenMOSS/MOSS-TTS-Nano && pip install -e .  (not on PyPI)",
@@ -3480,6 +3678,8 @@ _ENGINE_DOCS: dict[str, str] = {
     "omnivoice-gguf":       "docs/engines/omnivoice-gguf.md",
     "cosyvoice":            "docs/engines/cosyvoice.md",
     "kittentts":            "docs/engines/kittentts.md",
+    "mms-somali":           "docs/engines/mms-somali.md",
+    "egyptian-omnivoice":   "docs/engines/egyptian-omnivoice.md",
     "mlx-audio":            "docs/engines/mlx-audio.md",
     "voxcpm2":              "docs/engines/voxcpm2.md",
     "moss-tts-nano":        "docs/engines/moss-tts-nano.md",

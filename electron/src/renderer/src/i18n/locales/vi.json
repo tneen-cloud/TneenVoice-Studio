@@ -461,6 +461,13 @@
     "voice_source": "Nguồn giọng nói",
     "reference_audio": "Âm thanh tham chiếu",
     "reference_hint": "Dùng 5–15 giây lời nói rõ ràng.",
+    "recordGuide": {
+      "title": "Recording guide",
+      "readAloud": "Read aloud",
+      "tipsGeneric": "Quiet room, one speaker, 8–15 seconds, natural pace. Stay under 20s when you can.",
+      "tipsSomali": "Use Somali Latin spelling (c, x, q, dh, kh, sh). Quiet room, 8–15 seconds, natural pace.",
+      "tipsEgyptian": "Speak Egyptian colloquial (not formal MSA). Quiet room, 8–15 seconds, natural pace."
+    },
     "ref_usage_best_window": "Công cụ này dùng tối đa {{seconds}} giây — đoạn tốt nhất được chọn tự động.",
     "ref_usage_head": "Công cụ này dùng {{seconds}} giây đầu của đoạn này.",
     "ref_usage_long": "Dài hơn mức khuyến nghị {{seconds}} giây. Toàn bộ đoạn được gửi tới công cụ.",
@@ -611,7 +618,12 @@
     "replace_reference": "Thay mẫu tham chiếu",
     "keep_reference": "Giữ mẫu tham chiếu hiện tại",
     "new_reference": "Mẫu tham chiếu mới: {{name}}",
-    "replace_reference_hint": "Khi lưu, mẫu tham chiếu của giọng này sẽ được thay thế. Bản thu đã khóa và xác minh giọng của chính bạn sẽ bị xóa vì đoạn mới có thể là của người nói khác. Để trống bản chép lời để tự động chép lời đoạn mới."
+    "replace_reference_hint": "Khi lưu, mẫu tham chiếu của giọng này sẽ được thay thế. Bản thu đã khóa và xác minh giọng của chính bạn sẽ bị xóa vì đoạn mới có thể là của người nói khác. Để trống bản chép lời để tự động chép lời đoạn mới.",
+    "dialectRoute": {
+      "somaliClone": "Somali + your reference → OmniVoice cloning (Somali orthography applied).",
+      "somaliTts": "Somali text → MMS Somali engine when installed (fluent TTS; add a reference to clone).",
+      "egyptian": "Egyptian Arabic → Lahgtna Egyptian OmniVoice when installed (supports cloning)."
+    }
   },
   "designWorkspace": {
     "title": "Thiết kế",
@@ -1647,7 +1659,7 @@
     "toast_flushed": "Đã xóa — RAM {{ram}}G · VRAM {{vram}}G{{unloaded}}",
     "toast_model_unloaded": "· dỡ mô hình",
     "toast_flush_failed": "Xóa không thành công: {{message}}",
-    "name": "VoiceStudio",
+    "name": "TneenVoice Studio",
     "version": "v{{version}}",
     "version_dev": "v{{version}} · Phát triển",
     "tagline": "Nhân bản giọng nói địa phương. Không có gì rời khỏi máy của bạn.",

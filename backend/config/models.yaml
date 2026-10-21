@@ -312,6 +312,22 @@ models:
     size_gb: 0.08
     curated_on: [all]
 
+  - repo_id: "facebook/mms-tts-som"
+    label: "MMS Somali (fluent Somali TTS, Meta VITS, no cloning)"
+    role: TTS
+    engines: [mms-somali]
+    size_gb: 0.15
+    curated_on: [all]
+    note: "CC-BY-NC 4.0 weights — university/demo OK; not for commercial redistribution of the model."
+
+  - repo_id: "ehabnegm/lahgtna-omnivoice-egyptian-v3"
+    label: "Egyptian Arabic (Lahgtna OmniVoice fine-tune, arz)"
+    role: TTS
+    engines: [egyptian-omnivoice]
+    size_gb: 2.4
+    curated_on: [all]
+    note: "Uses raw Egyptian text (no MSA diacritics). Separate from default k2-fsa/OmniVoice weights."
+
   - repo_id: "openbmb/VoxCPM2"
     label: "VoxCPM2 (30 languages, voice cloning and design)"
     role: TTS

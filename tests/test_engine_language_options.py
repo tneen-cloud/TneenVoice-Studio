@@ -7,6 +7,7 @@ def tts():
 
 @pytest.mark.parametrize('engine,allowed,rejected', [
     ('kittentts', 'english', 'polish'),
+    ('mms-somali', 'somali', 'english'),
     ('audiocpp', 'chinese', 'polish'),
     ('indextts2', 'spanish', 'polish'),
     ('confucius4-tts', 'french', 'polish'),

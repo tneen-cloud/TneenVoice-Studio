@@ -461,6 +461,13 @@
     "voice_source": "音声ソース",
     "reference_audio": "参照音声",
     "reference_hint": "5～15秒のクリアな音声を使用してください。",
+    "recordGuide": {
+      "title": "Recording guide",
+      "readAloud": "Read aloud",
+      "tipsGeneric": "Quiet room, one speaker, 8–15 seconds, natural pace. Stay under 20s when you can.",
+      "tipsSomali": "Use Somali Latin spelling (c, x, q, dh, kh, sh). Quiet room, 8–15 seconds, natural pace.",
+      "tipsEgyptian": "Speak Egyptian colloquial (not formal MSA). Quiet room, 8–15 seconds, natural pace."
+    },
     "ref_usage_best_window": "このエンジンは最大 {{seconds}} 秒を使用します。最適な区間が自動で選ばれます。",
     "ref_usage_head": "このエンジンはこのクリップの最初の {{seconds}} 秒を使用します。",
     "ref_usage_long": "推奨の {{seconds}} 秒より長いクリップです。クリップ全体がエンジンに送られます。",
@@ -611,7 +618,12 @@
     "replace_reference": "参照音声を置き換える",
     "keep_reference": "現在の参照音声を使う",
     "new_reference": "新しい参照音声: {{name}}",
-    "replace_reference_hint": "保存すると、この音声の参照サンプルが置き換わります。新しいクリップは別の話者の可能性があるため、固定したテイクと本人音声の確認はリセットされます。書き起こしを空欄にすると、新しいクリップを自動で書き起こします。"
+    "replace_reference_hint": "保存すると、この音声の参照サンプルが置き換わります。新しいクリップは別の話者の可能性があるため、固定したテイクと本人音声の確認はリセットされます。書き起こしを空欄にすると、新しいクリップを自動で書き起こします。",
+    "dialectRoute": {
+      "somaliClone": "Somali + your reference → OmniVoice cloning (Somali orthography applied).",
+      "somaliTts": "Somali text → MMS Somali engine when installed (fluent TTS; add a reference to clone).",
+      "egyptian": "Egyptian Arabic → Lahgtna Egyptian OmniVoice when installed (supports cloning)."
+    }
   },
   "designWorkspace": {
     "title": "デザイン",
@@ -1647,7 +1659,7 @@
     "toast_flushed": "フラッシュ — RAM {{ram}}G · VRAM {{vram}}G{{unloaded}}",
     "toast_model_unloaded": "· モデルがアンロードされました",
     "toast_flush_failed": "フラッシュに失敗しました: {{message}}",
-    "name": "VoiceStudio",
+    "name": "TneenVoice Studio",
     "version": "v{{version}}",
     "version_dev": "v{{version}} · 開発",
     "tagline": "ローカル音声のクローン作成。マシンからは何も残りません。",

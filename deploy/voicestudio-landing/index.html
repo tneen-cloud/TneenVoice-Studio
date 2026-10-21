@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TneenVoice Studio — by Ahmed Elsayed</title>
+  <meta name="description" content="Local voice cloning for Somali and Egyptian Arabic. Built by Ahmed Elsayed. Download for Windows." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #0b1424;
+      --paper: #f4f7fc;
+      --muted: #5b6b86;
+      --blue: #1f5eff;
+      --blue-deep: #0f3dcc;
+      --line: rgba(15, 61, 204, 0.14);
+      --field: #dce8ff;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "DM Sans", system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.5;
+    }
+    a { color: inherit; }
+
+    /* Full-bleed hero */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      align-content: end;
+      padding: clamp(1.25rem, 4vw, 2.5rem);
+      padding-bottom: clamp(2.5rem, 8vh, 4.5rem);
+      overflow: hidden;
+      color: #eef4ff;
+      background:
+        linear-gradient(180deg, rgba(8, 18, 40, 0.25) 0%, rgba(8, 18, 40, 0.72) 55%, rgba(8, 18, 40, 0.92) 100%),
+        radial-gradient(1200px 700px at 70% 10%, rgba(31, 94, 255, 0.55), transparent 55%),
+        linear-gradient(145deg, #0a1630 0%, #12305f 48%, #0b1c3a 100%);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(
+          90deg,
+          transparent 0,
+          transparent 46px,
+          rgba(255, 255, 255, 0.03) 46px,
+          rgba(255, 255, 255, 0.03) 47px
+        );
+      pointer-events: none;
+      animation: drift 28s linear infinite;
+    }
+    @keyframes drift {
+      from { transform: translateX(0); }
+      to { transform: translateX(-47px); }
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: min(720px, 100%);
+      animation: rise 0.85s ease-out both;
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: none; }
+    }
+    .brand {
+      margin: 0 0 0.75rem;
+      font-family: Fraunces, Georgia, serif;
+      font-weight: 700;
+      font-size: clamp(2.75rem, 10vw, 5rem);
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+    }
+    .lede {
+      margin: 0 0 1.5rem;
+      max-width: 34rem;
+      font-size: clamp(1.05rem, 2.6vw, 1.25rem);
+      color: rgba(238, 244, 255, 0.82);
+    }
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      animation: rise 1s ease-out 0.12s both;
+    }
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 3.1rem;
+      padding: 0.85rem 1.35rem;
+      border-radius: 0.75rem;
+      background: linear-gradient(180deg, #3b7bff, var(--blue));
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.05rem;
+      text-decoration: none;
+      box-shadow: 0 14px 28px rgba(15, 61, 204, 0.35);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 34px rgba(15, 61, 204, 0.42);
+    }
+    .cta:focus-visible {
+      outline: 2px solid #9ec0ff;
+      outline-offset: 3px;
+    }
+    .meta {
+      margin: 0.9rem 0 0;
+      font-size: 0.92rem;
+      color: rgba(238, 244, 255, 0.62);
+      animation: rise 1.05s ease-out 0.2s both;
+    }
+    .meta code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.82em;
+      color: #cfe0ff;
+      word-break: break-all;
+    }
+    .wave {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 3px;
+      overflow: hidden;
+      background: rgba(158, 192, 255, 0.2);
+    }
+    .wave span {
+      display: block;
+      height: 100%;
+      width: 35%;
+      background: linear-gradient(90deg, transparent, #9ec0ff, transparent);
+      animation: sweep 2.6s ease-in-out infinite;
+    }
+    @keyframes sweep {
+      from { transform: translateX(-100%); }
+      to { transform: translateX(320%); }
+    }
+
+    section {
+      padding: clamp(3rem, 8vw, 5.5rem) clamp(1.25rem, 4vw, 2.5rem);
+    }
+    .wrap {
+      width: min(1080px, 100%);
+      margin: 0 auto;
+    }
+    h2 {
+      margin: 0 0 0.65rem;
+      font-family: Fraunces, Georgia, serif;
+      font-size: clamp(1.85rem, 4.5vw, 2.6rem);
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+    .section-lede {
+      margin: 0 0 1.75rem;
+      max-width: 36rem;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .dialects {
+      display: grid;
+      gap: 1.25rem;
+    }
+    @media (min-width: 720px) {
+      .dialects { grid-template-columns: 1fr 1fr; gap: 1.75rem; }
+    }
+    .dialect {
+      padding: 1.35rem 0 0;
+      border-top: 1px solid var(--line);
+    }
+    .dialect h3 {
+      margin: 0 0 0.4rem;
+      font-size: 1.2rem;
+      font-weight: 650;
+    }
+    .dialect p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .how {
+      background: linear-gradient(180deg, #eaf1ff 0%, var(--paper) 100%);
+    }
+    .steps {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 1rem;
+    }
+    @media (min-width: 800px) {
+      .steps { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    }
+    .steps li {
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--line);
+    }
+    .steps strong {
+      display: block;
+      margin-bottom: 0.35rem;
+      font-size: 1.05rem;
+    }
+    .steps span { color: var(--muted); }
+
+    footer {
+      padding: 2rem clamp(1.25rem, 4vw, 2.5rem) 2.75rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    footer .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.5rem;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    footer a {
+      color: var(--blue-deep);
+      text-decoration: none;
+    }
+    footer a:hover { text-decoration: underline; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <h1 class="brand">TneenVoice Studio</h1>
+      <p class="lede">
+        Fully local voice cloning on your PC — Somali and Egyptian Arabic first-class, built by Ahmed Elsayed.
+      </p>
+      <div class="cta-row">
+        <a class="cta" href="/downloads/TneenVoice-Studio-Windows-x64-0.5.7.exe">Download for Windows</a>
+      </div>
+      <p class="meta">NSIS installer · keeps your existing model cache · <code>SHA-256 50B8B6C048CD48568D578B532158839AA5F9B047F5ECF925129CE72698D7A582</code></p>
+    </div>
+    <div class="wave" aria-hidden="true"><span></span></div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <h2>Dialects that matter</h2>
+      <p class="section-lede">Pick the language. The app routes to the right engine and shows what to say when you record a clone.</p>
+      <div class="dialects">
+        <article class="dialect">
+          <h3>Somali</h3>
+          <p>Clone with your own voice via OmniVoice (Somali orthography). Or generate fluent Somali TTS with Meta MMS when you are not cloning.</p>
+        </article>
+        <article class="dialect">
+          <h3>Egyptian Arabic</h3>
+          <p>Colloquial Egyptian (arz) through the Lahgtna OmniVoice fine-tune — cloning supported when the dialect weights are installed.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="how">
+    <div class="wrap">
+      <h2>How it works</h2>
+      <p class="section-lede">One installer. Same Windows app data as before — no forced model reinstall.</p>
+      <ol class="steps">
+        <li>
+          <strong>Install</strong>
+          <span>Run the Windows setup. Start Menu opens TneenVoice Studio; the local backend starts with the app.</span>
+        </li>
+        <li>
+          <strong>Record or upload</strong>
+          <span>Use the on-screen script for Somali or Egyptian. Eight to fifteen seconds in a quiet room.</span>
+        </li>
+        <li>
+          <strong>Generate</strong>
+          <span>Language selection auto-routes the engine. Everything stays on your machine.</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p>© Ahmed Elsayed · TneenVoice Studio · AGPL-3.0</p>
+      <p>Based on <a href="https://github.com/debpalash/VoiceStudio">VoiceStudio</a></p>
+    </div>
+  </footer>
+</body>
+</html>

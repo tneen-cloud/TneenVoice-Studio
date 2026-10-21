@@ -23,26 +23,33 @@ export async function packageNativeHelper(context) {
   const platform = context.electronPlatformName;
   const target = nativeTarget(platform, Arch[context.arch]);
   const targetDir = join(root, 'target');
-  await new Promise((resolve, reject) => {
-    const child = spawn('cargo', ['build', '--locked', '--release', '--target', target], {
-      cwd: root,
-      env: { ...process.env, CARGO_TARGET_DIR: targetDir },
-      stdio: 'inherit',
-      windowsHide: true,
-    });
-    child.once('error', reject);
-    child.once('close', (code) =>
-      code === 0 ? resolve() : reject(new Error(`Native helper build failed (${code})`)),
-    );
-  });
   const name = 'voicestudio-desktop-bridge' + (platform === 'win32' ? '.exe' : '');
+  const built = join(targetDir, target, 'release', name);
+  const prebuilt = process.env.VOICESTUDIO_PREBUILT_NATIVE_HELPER;
+  if (prebuilt) {
+    await mkdir(join(targetDir, target, 'release'), { recursive: true });
+    await copyFile(resolve(prebuilt), built);
+  } else {
+    await new Promise((resolve, reject) => {
+      const child = spawn('cargo', ['build', '--locked', '--release', '--target', target], {
+        cwd: root,
+        env: { ...process.env, CARGO_TARGET_DIR: targetDir },
+        stdio: 'inherit',
+        windowsHide: true,
+      });
+      child.once('error', reject);
+      child.once('close', (code) =>
+        code === 0 ? resolve() : reject(new Error(`Native helper build failed (${code})`)),
+      );
+    });
+  }
   const destination = join(context.packager.getResourcesDir(context.appOutDir), 'native');
   await mkdir(destination, { recursive: true });
   const binary = join(destination, name);
-  await copyFile(join(targetDir, target, 'release', name), binary);
+  await copyFile(built, binary);
   if (platform === 'linux') {
-    await packageLinuxLibraries(join(targetDir, target, 'release', name), binary);
-    await packageLinuxLibraryNotices(join(targetDir, target, 'release', name), binary);
+    await packageLinuxLibraries(built, binary);
+    await packageLinuxLibraryNotices(built, binary);
   }
   if (platform === 'win32') await context.packager.signIf(binary);
   else await chmod(binary, 0o755);

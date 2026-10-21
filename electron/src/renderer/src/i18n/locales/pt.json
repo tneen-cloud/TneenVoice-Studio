@@ -463,6 +463,13 @@
     "voice_source": "Fonte de voz",
     "reference_audio": "Áudio de referência",
     "reference_hint": "Use de 5 a 15 segundos de fala nítida.",
+    "recordGuide": {
+      "title": "Recording guide",
+      "readAloud": "Read aloud",
+      "tipsGeneric": "Quiet room, one speaker, 8–15 seconds, natural pace. Stay under 20s when you can.",
+      "tipsSomali": "Use Somali Latin spelling (c, x, q, dh, kh, sh). Quiet room, 8–15 seconds, natural pace.",
+      "tipsEgyptian": "Speak Egyptian colloquial (not formal MSA). Quiet room, 8–15 seconds, natural pace."
+    },
     "ref_usage_best_window": "Este motor usa até {{seconds}} s — o melhor trecho é escolhido automaticamente.",
     "ref_usage_head": "Este motor usa os primeiros {{seconds}} s deste clipe.",
     "ref_usage_long": "Mais longo que os {{seconds}} s recomendados. O clipe inteiro é enviado ao motor.",
@@ -613,7 +620,12 @@
     "replace_reference": "Substituir referência",
     "keep_reference": "Manter a referência atual",
     "new_reference": "Nova referência: {{name}}",
-    "replace_reference_hint": "Salvar substitui a amostra de referência desta voz. A tomada bloqueada e a verificação de voz própria são removidas porque o novo clipe pode ser de outra pessoa. Deixe a transcrição em branco para transcrever o novo clipe automaticamente."
+    "replace_reference_hint": "Salvar substitui a amostra de referência desta voz. A tomada bloqueada e a verificação de voz própria são removidas porque o novo clipe pode ser de outra pessoa. Deixe a transcrição em branco para transcrever o novo clipe automaticamente.",
+    "dialectRoute": {
+      "somaliClone": "Somali + your reference → OmniVoice cloning (Somali orthography applied).",
+      "somaliTts": "Somali text → MMS Somali engine when installed (fluent TTS; add a reference to clone).",
+      "egyptian": "Egyptian Arabic → Lahgtna Egyptian OmniVoice when installed (supports cloning)."
+    }
   },
   "designWorkspace": {
     "title": "Desenhar",
@@ -1649,7 +1661,7 @@
     "toast_flushed": "Liberado — RAM {{ram}}G · VRAM {{vram}}G{{unloaded}}",
     "toast_model_unloaded": "· modelo descarregado",
     "toast_flush_failed": "Falha na liberação: {{message}}",
-    "name": "VoiceStudio",
+    "name": "TneenVoice Studio",
     "version": "v{{version}}",
     "version_dev": "v{{version}} · Desenvolvimento",
     "coming_soon": "Em breve",

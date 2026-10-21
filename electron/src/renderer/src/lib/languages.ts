@@ -4,6 +4,9 @@ import languagesJson from './languages.json';
 export const LANGUAGES: string[] = languagesJson;
 
 export const POPULAR_LANGUAGES: string[] = [
+  'Somali',
+  'Egyptian Arabic',
+  'Arabic',
   'English',
   'Spanish',
   'French',
@@ -14,7 +17,6 @@ export const POPULAR_LANGUAGES: string[] = [
   'Chinese',
   'Japanese',
   'Korean',
-  'Arabic',
   'Hindi',
 ];
 

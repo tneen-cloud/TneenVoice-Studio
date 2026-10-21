@@ -8,7 +8,7 @@
       "license": "CC-BY-NC (version unspecified); Higgs Audio 2; Meta Llama 3",
       "commercial_use": false,
       "review_status": "noncommercial",
-      "credit": "OmniVoice — Han Zhu and coauthors; tokenizer by Boson AI / Meta",
+      "credit": "OmniVoice \u2014 Han Zhu and coauthors; tokenizer by Boson AI / Meta",
       "source_url": "https://huggingface.co/k2-fsa/OmniVoice",
       "evidence_url": "https://huggingface.co/k2-fsa/OmniVoice/blob/c5fdb5ccb189668d56333f77ba2629f4cd7535f4/README.md",
       "revision": "c5fdb5ccb189668d56333f77ba2629f4cd7535f4",
@@ -1113,7 +1113,7 @@
       "license": "CC-BY-NC-4.0",
       "commercial_use": false,
       "review_status": "noncommercial",
-      "credit": "NLLB-200 — Meta AI",
+      "credit": "NLLB-200 \u2014 Meta AI",
       "source_url": "https://huggingface.co/facebook/nllb-200-distilled-600M",
       "evidence_url": "https://huggingface.co/facebook/nllb-200-distilled-600M/blob/f8d333a098d19b4fd9a8b18f94170487ad3f821d/README.md",
       "revision": "f8d333a098d19b4fd9a8b18f94170487ad3f821d",
@@ -1399,6 +1399,59 @@
           "kitten_tts_mini_v0_8.onnx",
           "voices.npz: Bella/Jasper/Luna/Bruno/Rosie/Hugo/Kiki/Leo",
           "kittentts 0.8.1 SDK"
+        ]
+      }
+    },
+    {
+      "id": "facebook/mms-tts-som",
+      "license": "cc-by-nc-4.0",
+      "commercial_use": false,
+      "review_status": "unreviewed",
+      "credit": "facebook/mms-tts-som (Meta Massively Multilingual Speech)",
+      "source_url": "https://huggingface.co/facebook/mms-tts-som",
+      "evidence_url": "https://huggingface.co/facebook/mms-tts-som",
+      "revision": null,
+      "engines": [
+        "mms-somali"
+      ],
+      "configured_at": "backend/config/models.yaml",
+      "notes": "CC-BY-NC 4.0 \u2014 non-commercial model weights. Suitable for university/demo use; do not treat as commercial clearance. Attribution to Meta MMS required.",
+      "runtime_revision": null,
+      "runtime_pin_scope": "none",
+      "runtime_pin_source": null,
+      "component_closure": "incomplete",
+      "commercial_inference": "noncommercial",
+      "commercial_outputs": "unknown",
+      "documents": [],
+      "artifacts": [],
+      "required_components": [],
+      "upstream_access": "open",
+      "audit_observations": {
+        "commercial_inference": {
+          "status": "noncommercial",
+          "scope": "Selected weight/component; all required components and intended use must be assessed.",
+          "summary": "Upstream model card states CC-BY-NC 4.0. Commercial use of the weights is not permitted under that licence."
+        },
+        "output_terms": {
+          "status": "not_specifically_granted_in_reviewed_material",
+          "summary": "No blanket output ownership or third-party-rights clearance established.",
+          "ownership_or_all_rights_cleared": false
+        },
+        "sources": [
+          {
+            "url": "https://huggingface.co/facebook/mms-tts-som",
+            "checked_at": "2026-10-22",
+            "method": "read_primary_source"
+          }
+        ],
+        "open_questions": [
+          "Governing terms at installed revision",
+          "Attribution/NOTICE/redistribution duties for CC-BY-NC",
+          "Output commercial-use scope for synthesised audio"
+        ],
+        "identified_components": [
+          "VitsModel weights",
+          "AutoTokenizer vocabulary"
         ]
       }
     },
@@ -1978,7 +2031,7 @@
       "license": "CC-BY-NC-4.0; Higgs Audio 2; Meta Llama 3",
       "commercial_use": false,
       "review_status": "noncommercial",
-      "credit": "OmniVoice — Han Zhu and coauthors; GGUF conversion by Serveurperso; tokenizer by Boson AI / Meta",
+      "credit": "OmniVoice \u2014 Han Zhu and coauthors; GGUF conversion by Serveurperso; tokenizer by Boson AI / Meta",
       "source_url": "https://huggingface.co/Serveurperso/OmniVoice-GGUF",
       "evidence_url": "https://huggingface.co/Serveurperso/OmniVoice-GGUF/blob/017094167b5c9ed565a5076ac9b3b93c5ecf5c73/README.md",
       "revision": "017094167b5c9ed565a5076ac9b3b93c5ecf5c73",
@@ -2827,7 +2880,7 @@
       "license": "mit",
       "commercial_use": false,
       "review_status": "unreviewed",
-      "credit": "OpenAI — Whisper large-v3-turbo",
+      "credit": "OpenAI \u2014 Whisper large-v3-turbo",
       "source_url": "https://huggingface.co/openai/whisper-large-v3-turbo",
       "evidence_url": "https://huggingface.co/openai/whisper-large-v3-turbo/blob/41f01f3fe87f28c78e2fbf8b568835947dd65ed9/README.md",
       "revision": "41f01f3fe87f28c78e2fbf8b568835947dd65ed9",
@@ -2946,6 +2999,59 @@
           "Reference voice and input rights, consent, training-provenance scope"
         ],
         "identified_components": []
+      }
+    },
+    {
+      "id": "ehabnegm/lahgtna-omnivoice-egyptian-v3",
+      "license": "apache-2.0",
+      "commercial_use": false,
+      "review_status": "unreviewed",
+      "credit": "ehabnegm/lahgtna-omnivoice-egyptian-v3",
+      "source_url": "https://huggingface.co/ehabnegm/lahgtna-omnivoice-egyptian-v3",
+      "evidence_url": "https://huggingface.co/ehabnegm/lahgtna-omnivoice-egyptian-v3",
+      "revision": null,
+      "engines": [
+        "egyptian-omnivoice"
+      ],
+      "configured_at": "backend/config/models.yaml",
+      "notes": "Egyptian OmniVoice fine-tune (arz). Unreviewed commercial clearance.",
+      "runtime_revision": null,
+      "runtime_pin_scope": "none",
+      "runtime_pin_source": null,
+      "component_closure": "incomplete",
+      "commercial_inference": "noncommercial",
+      "commercial_outputs": "unknown",
+      "documents": [],
+      "artifacts": [],
+      "required_components": [],
+      "upstream_access": "open",
+      "audit_observations": {
+        "commercial_inference": {
+          "status": "noncommercial",
+          "scope": "Selected weight/component; all required components and intended use must be assessed.",
+          "summary": "Upstream model card states CC-BY-NC 4.0. Commercial use of the weights is not permitted under that licence."
+        },
+        "output_terms": {
+          "status": "not_specifically_granted_in_reviewed_material",
+          "summary": "No blanket output ownership or third-party-rights clearance established.",
+          "ownership_or_all_rights_cleared": false
+        },
+        "sources": [
+          {
+            "url": "https://huggingface.co/facebook/mms-tts-som",
+            "checked_at": "2026-10-22",
+            "method": "read_primary_source"
+          }
+        ],
+        "open_questions": [
+          "Governing terms at installed revision",
+          "Attribution/NOTICE/redistribution duties for CC-BY-NC",
+          "Output commercial-use scope for synthesised audio"
+        ],
+        "identified_components": [
+          "VitsModel weights",
+          "AutoTokenizer vocabulary"
+        ]
       }
     }
   ],

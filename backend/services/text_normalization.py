@@ -700,7 +700,17 @@ def normalize_for_tts(text: str, language: Optional[str] = None) -> str:
     if not normalization_enabled():
         return text
     try:
-        return normalize_text(text, language)
+        out = normalize_text(text, language)
+        lang = (language or "").strip().lower()
+        if lang in ("somali", "so") or lang.endswith("-so"):
+            from services.somali_text import normalize_somali_for_tts
+
+            out = normalize_somali_for_tts(out)
+        elif lang in ("egyptian arabic", "egyptian", "arz", "masri") or lang.startswith("arz"):
+            from services.egyptian_text import normalize_egyptian_for_tts
+
+            out = normalize_egyptian_for_tts(out)
+        return out
     except Exception:  # noqa: BLE001 — normalization must never break synth
         logger.warning("text normalization failed; using raw text", exc_info=True)
         return text

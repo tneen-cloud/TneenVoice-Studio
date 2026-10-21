@@ -1733,8 +1733,16 @@ async def generate_speech(
     from services.tts_backend import (
         OmniVoiceBackend, _mask_hf_tokens, active_backend_id, get_backend_class,
     )
+    from services.language_engine import resolve_tts_backend_id
 
-    engine_id = engine or active_backend_id()
+    # Dialect routing: Somali TTS → mms-somali; Somali clone → OmniVoice;
+    # Egyptian → egyptian-omnivoice when available. Explicit `engine` wins.
+    engine_id = resolve_tts_backend_id(
+        language=language,
+        explicit_engine=engine,
+        active_engine=active_backend_id(),
+        wants_cloning=bool(ref_audio is not None or profile_id),
+    )
     from services.performance_profiles import tts_defaults
 
     sampling_defaults = tts_defaults(engine_id)

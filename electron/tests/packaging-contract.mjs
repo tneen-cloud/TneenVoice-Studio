@@ -74,14 +74,15 @@ const electronPackage = JSON.parse(readFileSync(resolve(root, 'package.json'), '
 assert.match(electronPackage.author?.email ?? '', /@/, 'Linux package declares a maintainer email');
 assert.equal(config.productName, PRODUCT_NAME, 'Builder uses the central product name');
 assert.equal(config.appId, APP_ID, 'Builder uses the central application ID');
+const artifactPrefix = `${PRODUCT_NAME.replace(/[^A-Za-z0-9]+/g, '-')}-${
+  {
+    'microsoft-store': 'MicrosoftStore',
+    'mac-app-store': 'MacAppStore',
+  }[DISTRIBUTION_TARGET] ?? 'Electron'
+}`;
 assert.equal(
   config.artifactName,
-  `${PRODUCT_NAME}-${
-    {
-      'microsoft-store': 'MicrosoftStore',
-      'mac-app-store': 'MacAppStore',
-    }[DISTRIBUTION_TARGET] ?? 'Electron'
-  }-\${version}-\${os}-\${arch}.\${ext}`,
+  `${artifactPrefix}-\${version}-\${os}-\${arch}.\${ext}`,
   'Store packaging is distinct without renaming direct-download artifacts',
 );
 assert.equal(

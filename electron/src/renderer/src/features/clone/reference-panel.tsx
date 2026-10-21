@@ -29,6 +29,7 @@ import { setCloneSetting, useCloneSetting } from '@/lib/store/clone-settings';
 import { selectCloneProfile, setReferenceFile, useReference } from '@/lib/store/reference';
 import { setWorkspace } from '@/lib/store/workspace';
 import { cn } from '@/lib/utils';
+import { RecordingQualityGuide } from '@/components/recording-quality-guide';
 import { ReferenceSourcePicker, ReferenceUsageNote } from './reference-input';
 
 interface SaveProfileFormProps {
@@ -301,6 +302,7 @@ export function ReferencePanel({
   const reference = useReference();
   const profiles = useProfiles();
   const selectedProfileId = useCloneSetting('selectedProfileId');
+  const language = useCloneSetting('language');
   const [saving, setSaving] = useState(false);
 
   const profile =
@@ -323,7 +325,12 @@ export function ReferencePanel({
           </div>
         </div>
 
-        {!hasReference ? <ReferenceSourcePicker /> : null}
+        {!hasReference ? (
+          <div className="flex flex-col gap-3">
+            <RecordingQualityGuide language={language} />
+            <ReferenceSourcePicker />
+          </div>
+        ) : null}
 
         {file ? (
           <div className="flex flex-col gap-2 rounded-lg bg-muted/30 p-3">

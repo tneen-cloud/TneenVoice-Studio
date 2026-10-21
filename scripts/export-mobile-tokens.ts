@@ -10,6 +10,7 @@
 // resolved to sRGB here; the apps never see oklch or color-mix.
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import {
   THEME_COLOR_ROLES,
   getThemeColorsForAppearance,
@@ -18,7 +19,13 @@ import {
 } from '../electron/src/renderer/src/lib/themes/t3-palettes';
 import { AVAILABLE_PALETTES, colorVariable } from '../electron/src/renderer/src/lib/themes/theme-preferences';
 
-const ROOT = join(import.meta.dir, '..');
+// Bun exposes import.meta.dir; Node/tsx need fileURLToPath(import.meta.url).
+const ROOT = join(
+  typeof import.meta.dir === 'string'
+    ? import.meta.dir
+    : dirname(fileURLToPath(import.meta.url)),
+  '..',
+);
 const STYLES = join(ROOT, 'electron/src/renderer/src/styles');
 const OUT = {
   json: join(ROOT, 'mobile/contract/tokens.json'),
@@ -133,7 +140,14 @@ function blockAfter(css: string, start: number): string {
 }
 
 // Resolve like the renderer's build does, so hoisted or isolated installs both work.
-const tailwind = readFileSync(Bun.resolveSync('tailwindcss/theme.css', join(ROOT, 'electron')), 'utf8');
+function resolveFromElectron(specifier: string): string {
+  if (typeof Bun !== 'undefined' && typeof Bun.resolveSync === 'function') {
+    return Bun.resolveSync(specifier, join(ROOT, 'electron'));
+  }
+  const { createRequire } = require('node:module') as typeof import('node:module');
+  return createRequire(join(ROOT, 'electron', 'package.json')).resolve(specifier);
+}
+const tailwind = readFileSync(resolveFromElectron('tailwindcss/theme.css'), 'utf8');
 const globals = readFileSync(join(STYLES, 'globals.css'), 'utf8');
 const t3 = readFileSync(join(STYLES, 't3-theme.css'), 'utf8');
 

@@ -469,6 +469,13 @@
     "voice_source": "مصدر الصوت",
     "reference_audio": "الصوت المرجعي",
     "reference_hint": "استخدم من 5 إلى 15 ثانية من الكلام الواضح.",
+    "recordGuide": {
+      "title": "Recording guide",
+      "readAloud": "Read aloud",
+      "tipsGeneric": "Quiet room, one speaker, 8–15 seconds, natural pace. Stay under 20s when you can.",
+      "tipsSomali": "Use Somali Latin spelling (c, x, q, dh, kh, sh). Quiet room, 8–15 seconds, natural pace.",
+      "tipsEgyptian": "Speak Egyptian colloquial (not formal MSA). Quiet room, 8–15 seconds, natural pace."
+    },
     "ref_usage_best_window": "يستخدم هذا المحرك حتى {{seconds}} ث — يُختار أفضل مقطع تلقائيًا.",
     "ref_usage_head": "يستخدم هذا المحرك أول {{seconds}} ث من هذا المقطع.",
     "ref_usage_long": "أطول من {{seconds}} ث الموصى بها. يُرسَل المقطع كاملًا إلى المحرك.",
@@ -619,7 +626,12 @@
     "replace_reference": "استبدال المرجع",
     "keep_reference": "الإبقاء على المرجع الحالي",
     "new_reference": "المرجع الجديد: {{name}}",
-    "replace_reference_hint": "يؤدي الحفظ إلى استبدال العينة المرجعية لهذا الصوت. يُمسح المقطع المقفل والتحقق من الصوت الشخصي لأن المقطع الجديد قد يكون لمتحدث مختلف. اترك النص فارغًا لتفريغ المقطع الجديد تلقائيًا."
+    "replace_reference_hint": "يؤدي الحفظ إلى استبدال العينة المرجعية لهذا الصوت. يُمسح المقطع المقفل والتحقق من الصوت الشخصي لأن المقطع الجديد قد يكون لمتحدث مختلف. اترك النص فارغًا لتفريغ المقطع الجديد تلقائيًا.",
+    "dialectRoute": {
+      "somaliClone": "Somali + your reference → OmniVoice cloning (Somali orthography applied).",
+      "somaliTts": "Somali text → MMS Somali engine when installed (fluent TTS; add a reference to clone).",
+      "egyptian": "Egyptian Arabic → Lahgtna Egyptian OmniVoice when installed (supports cloning)."
+    }
   },
   "designWorkspace": {
     "title": "تصميم",
@@ -1655,7 +1667,7 @@
     "toast_flushed": "متدفق — ذاكرة الوصول العشوائي {{ram}}G · VRAM {{vram}}G{{unloaded}}",
     "toast_model_unloaded": "· تم تفريغ النموذج",
     "toast_flush_failed": "فشل التدفق: {{message}}",
-    "name": "VoiceStudio",
+    "name": "TneenVoice Studio",
     "version": "v{{version}}",
     "version_dev": "v{{version}} · تطوير",
     "tagline": "استنساخ الصوت المحلي. لا شيء يترك جهازك.",

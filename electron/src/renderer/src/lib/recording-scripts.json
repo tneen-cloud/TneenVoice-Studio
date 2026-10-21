@@ -1,0 +1,22 @@
+{
+  "default": {
+    "tipsKey": "clone.recordGuide.tipsGeneric",
+    "script": "Hello. Today is a clear day. Please record this line once, speaking naturally, without rushing."
+  },
+  "en": {
+    "tipsKey": "clone.recordGuide.tipsGeneric",
+    "script": "My name is Alex. I live near the river. Numbers like twenty-four and ninety-seven should sound clear when I speak."
+  },
+  "so": {
+    "tipsKey": "clone.recordGuide.tipsSomali",
+    "script": "Salaam calaykum. Magacaygu waa Axmed. Waxaan ku noolahay Muqdisho. Fadlan dhegayso erayadan: cunto, xoolo, qori, dhabar, khayr, shaah."
+  },
+  "arz": {
+    "tipsKey": "clone.recordGuide.tipsEgyptian",
+    "script": "أهلاً بحضرتك، معاك خدمة العملاء. النهارده الجو صحو، وممكن أساعدك إزاي؟ الرقم بتاعي خمسة وعشرين."
+  },
+  "ar": {
+    "tipsKey": "clone.recordGuide.tipsGeneric",
+    "script": "مرحباً، اسمي أحمد. أسكن في المدينة. من فضلك استمع إلى هذا النص بوضوح وبسرعة طبيعية."
+  }
+}

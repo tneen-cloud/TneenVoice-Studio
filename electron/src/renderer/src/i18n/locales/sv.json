@@ -461,6 +461,13 @@
     "voice_source": "Röstkälla",
     "reference_audio": "Referensljud",
     "reference_hint": "Använd 5–15 sekunder tydligt tal.",
+    "recordGuide": {
+      "title": "Recording guide",
+      "readAloud": "Read aloud",
+      "tipsGeneric": "Quiet room, one speaker, 8–15 seconds, natural pace. Stay under 20s when you can.",
+      "tipsSomali": "Use Somali Latin spelling (c, x, q, dh, kh, sh). Quiet room, 8–15 seconds, natural pace.",
+      "tipsEgyptian": "Speak Egyptian colloquial (not formal MSA). Quiet room, 8–15 seconds, natural pace."
+    },
     "ref_usage_best_window": "Den här motorn använder upp till {{seconds}} s – det bästa avsnittet väljs automatiskt.",
     "ref_usage_head": "Den här motorn använder de första {{seconds}} s av klippet.",
     "ref_usage_long": "Längre än rekommenderade {{seconds}} s. Hela klippet skickas till motorn.",
@@ -611,7 +618,12 @@
     "replace_reference": "Ersätt referens",
     "keep_reference": "Behåll nuvarande referens",
     "new_reference": "Ny referens: {{name}}",
-    "replace_reference_hint": "När du sparar ersätts röstens referensprov. Den låsta tagningen och verifieringen av egen röst rensas eftersom det nya klippet kan vara en annan talare. Lämna transkriptionen tom för att transkribera det nya klippet automatiskt."
+    "replace_reference_hint": "När du sparar ersätts röstens referensprov. Den låsta tagningen och verifieringen av egen röst rensas eftersom det nya klippet kan vara en annan talare. Lämna transkriptionen tom för att transkribera det nya klippet automatiskt.",
+    "dialectRoute": {
+      "somaliClone": "Somali + your reference → OmniVoice cloning (Somali orthography applied).",
+      "somaliTts": "Somali text → MMS Somali engine when installed (fluent TTS; add a reference to clone).",
+      "egyptian": "Egyptian Arabic → Lahgtna Egyptian OmniVoice when installed (supports cloning)."
+    }
   },
   "designWorkspace": {
     "title": "Designa",
@@ -1647,7 +1659,7 @@
     "toast_flushed": "Spolat — RAM {{ram}}G · VRAM {{vram}}G{{unloaded}}",
     "toast_model_unloaded": "· modell avlastad",
     "toast_flush_failed": "Spolning misslyckades: {{message}}",
-    "name": "VoiceStudio",
+    "name": "TneenVoice Studio",
     "version": "v{{version}}",
     "version_dev": "v{{version}} · Utveckling",
     "tagline": "Lokal röstkloning. Inget lämnar din maskin.",

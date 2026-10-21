@@ -102,10 +102,10 @@ const hashes = await fileHashes(artifactPath, platform === 'linux');
 assert.equal(hashes.sha512, fileSha, 'Update metadata SHA-512 matches artifact bytes');
 
 const osToken = platform === 'win32' ? 'win' : platform === 'darwin' ? 'mac' : 'linux';
-const artifactBrand =
-  process.env.VOICESTUDIO_DISTRIBUTION === 'microsoft-store'
-    ? 'VoiceStudio-MicrosoftStore'
-    : 'VoiceStudio-Electron';
+const { PRODUCT_NAME } = await import('../../config/app-config.mjs');
+const artifactLabel =
+  process.env.VOICESTUDIO_DISTRIBUTION === 'microsoft-store' ? 'MicrosoftStore' : 'Electron';
+const artifactBrand = `${PRODUCT_NAME.replace(/[^A-Za-z0-9]+/g, '-')}-${artifactLabel}`;
 assert(
   fileUrl.startsWith(`${artifactBrand}-${expectedVersion}-${osToken}-${arch}.`),
   'Update artifact preserves the branded version/platform/architecture name',

@@ -474,6 +474,13 @@
     "voice_source": "声音来源",
     "reference_audio": "参考音频",
     "reference_hint": "使用 5–15 秒清晰语音。",
+    "recordGuide": {
+      "title": "Recording guide",
+      "readAloud": "Read aloud",
+      "tipsGeneric": "Quiet room, one speaker, 8–15 seconds, natural pace. Stay under 20s when you can.",
+      "tipsSomali": "Use Somali Latin spelling (c, x, q, dh, kh, sh). Quiet room, 8–15 seconds, natural pace.",
+      "tipsEgyptian": "Speak Egyptian colloquial (not formal MSA). Quiet room, 8–15 seconds, natural pace."
+    },
     "ref_usage_best_window": "此引擎最多使用 {{seconds}} 秒，会自动选取最佳片段。",
     "ref_usage_head": "此引擎使用该片段的前 {{seconds}} 秒。",
     "ref_usage_long": "超过建议的 {{seconds}} 秒。整段音频都会发送给引擎。",
@@ -624,7 +631,12 @@
     "replace_reference": "替换参考音频",
     "keep_reference": "保留当前参考音频",
     "new_reference": "新参考音频：{{name}}",
-    "replace_reference_hint": "保存后将替换此音色的参考样本。由于新片段可能来自其他说话人，已锁定的片段和本人声音验证会被清除。转写留空即可自动转写新片段。"
+    "replace_reference_hint": "保存后将替换此音色的参考样本。由于新片段可能来自其他说话人，已锁定的片段和本人声音验证会被清除。转写留空即可自动转写新片段。",
+    "dialectRoute": {
+      "somaliClone": "Somali + your reference → OmniVoice cloning (Somali orthography applied).",
+      "somaliTts": "Somali text → MMS Somali engine when installed (fluent TTS; add a reference to clone).",
+      "egyptian": "Egyptian Arabic → Lahgtna Egyptian OmniVoice when installed (supports cloning)."
+    }
   },
   "designWorkspace": {
     "title": "设计",
@@ -1647,7 +1659,7 @@
     "toast_flushed": "刷新 — RAM {{ram}}G · VRAM {{vram}}G{{unloaded}}",
     "toast_model_unloaded": "· 模型卸载",
     "toast_flush_failed": "刷新失败：{{message}}",
-    "name": "VoiceStudio",
+    "name": "TneenVoice Studio",
     "version": "v{{version}}",
     "version_dev": "v{{version}} · 开发版",
     "tagline": "本地语音克隆。没有任何东西离开你的机器。",

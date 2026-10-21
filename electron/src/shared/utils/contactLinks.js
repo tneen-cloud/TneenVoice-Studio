@@ -1,14 +1,14 @@
-export const REPO_URL = 'https://github.com/debpalash/VoiceStudio';
-export const ISSUES_URL = `${REPO_URL}/issues`;
-export const DISCORD_URL = 'https://discord.gg/bzQavDfVV9';
-// GitHub Security Advisories = the private "report a vulnerability" flow that
-// SECURITY.md points at (never a public issue for security bugs).
-export const SECURITY_URL = `${REPO_URL}/security/advisories/new`;
-export const EMAIL = 'hi@voicestudio.sh';
-export const WEBSITE_URL = 'https://palash.dev';
-export const X_URL = 'https://x.com/idebpalash';
+/** TneenVoice Studio product links (surface debrand from upstream). */
+export const SITE_URL = 'https://voicestudio.tneen.cloud';
+export const REPO_URL = SITE_URL;
+export const ISSUES_URL = `${SITE_URL}/#support`;
+export const DISCORD_URL = SITE_URL;
+export const SECURITY_URL = `${SITE_URL}/#support`;
+export const EMAIL = 'support@tneen.cloud';
+export const WEBSITE_URL = SITE_URL;
+export const X_URL = SITE_URL;
 
-export const LICENSE_EMAIL = 'hi@voicestudio.sh';
+export const LICENSE_EMAIL = EMAIL;
 export const LICENSE_MAILTO =
-  'mailto:hi@voicestudio.sh?subject=VoiceStudio Commercial License Inquiry' +
-  '&body=Hi Palash,%0A%0AI%27d like to talk about a commercial license for VoiceStudio.%0A%0AOrganization:%0ATeam size:%0AUse case:%0A';
+  `mailto:${EMAIL}?subject=TneenVoice%20Studio%20Inquiry` +
+  '&body=Hi%2C%0A%0AI%20have%20a%20question%20about%20TneenVoice%20Studio.%0A%0A';

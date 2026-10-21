@@ -461,6 +461,13 @@
     "voice_source": "แหล่งที่มาของเสียง",
     "reference_audio": "เสียงอ้างอิง",
     "reference_hint": "ใช้เสียงพูดที่ชัดเจน 5–15 วินาที",
+    "recordGuide": {
+      "title": "Recording guide",
+      "readAloud": "Read aloud",
+      "tipsGeneric": "Quiet room, one speaker, 8–15 seconds, natural pace. Stay under 20s when you can.",
+      "tipsSomali": "Use Somali Latin spelling (c, x, q, dh, kh, sh). Quiet room, 8–15 seconds, natural pace.",
+      "tipsEgyptian": "Speak Egyptian colloquial (not formal MSA). Quiet room, 8–15 seconds, natural pace."
+    },
     "ref_usage_best_window": "เอนจินนี้ใช้ได้สูงสุด {{seconds}} วินาที — เลือกช่วงที่ดีที่สุดให้อัตโนมัติ",
     "ref_usage_head": "เอนจินนี้ใช้ {{seconds}} วินาทีแรกของคลิปนี้",
     "ref_usage_long": "ยาวกว่า {{seconds}} วินาทีที่แนะนำ ระบบจะส่งทั้งคลิปให้เอนจิน",
@@ -611,7 +618,12 @@
     "replace_reference": "แทนที่เสียงอ้างอิง",
     "keep_reference": "ใช้เสียงอ้างอิงปัจจุบัน",
     "new_reference": "เสียงอ้างอิงใหม่: {{name}}",
-    "replace_reference_hint": "การบันทึกจะแทนที่ตัวอย่างเสียงอ้างอิงของเสียงนี้ เทคที่ล็อกไว้และการยืนยันเสียงของตนเองจะถูกล้าง เพราะคลิปใหม่อาจเป็นผู้พูดคนอื่น เว้นข้อความถอดเสียงว่างไว้เพื่อถอดเสียงคลิปใหม่โดยอัตโนมัติ"
+    "replace_reference_hint": "การบันทึกจะแทนที่ตัวอย่างเสียงอ้างอิงของเสียงนี้ เทคที่ล็อกไว้และการยืนยันเสียงของตนเองจะถูกล้าง เพราะคลิปใหม่อาจเป็นผู้พูดคนอื่น เว้นข้อความถอดเสียงว่างไว้เพื่อถอดเสียงคลิปใหม่โดยอัตโนมัติ",
+    "dialectRoute": {
+      "somaliClone": "Somali + your reference → OmniVoice cloning (Somali orthography applied).",
+      "somaliTts": "Somali text → MMS Somali engine when installed (fluent TTS; add a reference to clone).",
+      "egyptian": "Egyptian Arabic → Lahgtna Egyptian OmniVoice when installed (supports cloning)."
+    }
   },
   "designWorkspace": {
     "title": "สร้างเสียง",
@@ -1647,7 +1659,7 @@
     "toast_flushed": "ฟลัช — RAM {{ram}}G · VRAM {{vram}}G{{unloaded}}",
     "toast_model_unloaded": "· โมเดลยกเลิกการโหลดแล้ว",
     "toast_flush_failed": "การฟลัชล้มเหลว: {{message}}",
-    "name": "VoiceStudio",
+    "name": "TneenVoice Studio",
     "version": "v{{version}}",
     "version_dev": "v{{version}} · สำหรับพัฒนา",
     "tagline": "การโคลนเสียงท้องถิ่น ไม่มีอะไรเหลือจากเครื่องของคุณ",

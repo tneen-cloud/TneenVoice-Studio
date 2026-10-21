@@ -463,6 +463,13 @@
     "voice_source": "Sorgente vocale",
     "reference_audio": "Audio di riferimento",
     "reference_hint": "Usa 5–15 secondi di parlato nitido.",
+    "recordGuide": {
+      "title": "Recording guide",
+      "readAloud": "Read aloud",
+      "tipsGeneric": "Quiet room, one speaker, 8–15 seconds, natural pace. Stay under 20s when you can.",
+      "tipsSomali": "Use Somali Latin spelling (c, x, q, dh, kh, sh). Quiet room, 8–15 seconds, natural pace.",
+      "tipsEgyptian": "Speak Egyptian colloquial (not formal MSA). Quiet room, 8–15 seconds, natural pace."
+    },
     "ref_usage_best_window": "Questo motore usa fino a {{seconds}} s: il passaggio migliore viene scelto automaticamente.",
     "ref_usage_head": "Questo motore usa i primi {{seconds}} s di questa clip.",
     "ref_usage_long": "Più lunga dei {{seconds}} s consigliati. L'intera clip viene inviata al motore.",
@@ -613,7 +620,12 @@
     "replace_reference": "Sostituisci riferimento",
     "keep_reference": "Mantieni il riferimento attuale",
     "new_reference": "Nuovo riferimento: {{name}}",
-    "replace_reference_hint": "Il salvataggio sostituisce il campione di riferimento di questa voce. La ripresa bloccata e la verifica della propria voce vengono cancellate perché la nuova clip potrebbe essere di un'altra persona. Lascia vuota la trascrizione per trascrivere automaticamente la nuova clip."
+    "replace_reference_hint": "Il salvataggio sostituisce il campione di riferimento di questa voce. La ripresa bloccata e la verifica della propria voce vengono cancellate perché la nuova clip potrebbe essere di un'altra persona. Lascia vuota la trascrizione per trascrivere automaticamente la nuova clip.",
+    "dialectRoute": {
+      "somaliClone": "Somali + your reference → OmniVoice cloning (Somali orthography applied).",
+      "somaliTts": "Somali text → MMS Somali engine when installed (fluent TTS; add a reference to clone).",
+      "egyptian": "Egyptian Arabic → Lahgtna Egyptian OmniVoice when installed (supports cloning)."
+    }
   },
   "designWorkspace": {
     "title": "Progetta",
@@ -1649,7 +1661,7 @@
     "toast_flushed": "Scaricato — RAM {{ram}}G · VRAM {{vram}}G{{unloaded}}",
     "toast_model_unloaded": "· modello scarico",
     "toast_flush_failed": "Eliminazione non riuscita: {{message}}",
-    "name": "VoiceStudio",
+    "name": "TneenVoice Studio",
     "version": "v{{version}}",
     "version_dev": "v{{version}} · Sviluppo",
     "tagline": "Clonazione vocale locale. Niente lascia la tua macchina.",

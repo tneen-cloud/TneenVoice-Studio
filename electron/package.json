@@ -2,12 +2,12 @@
   "name": "voicestudio-electron",
   "version": "0.0.0-electron",
   "private": true,
-  "description": "VoiceStudio desktop shell (Electron) - local voice cloning, no cloud.",
-  "homepage": "https://github.com/debpalash/VoiceStudio",
+  "description": "TneenVoice Studio by Ahmed Elsayed — local Somali and Egyptian Arabic voice cloning.",
+  "homepage": "https://voicestudio.tneen.cloud",
   "license": "AGPL-3.0-only",
   "author": {
-    "name": "VoiceStudio contributors",
-    "email": "hi@voicestudio.sh"
+    "name": "Ahmed Elsayed",
+    "email": "info@tneen.cloud"
   },
   "type": "module",
   "main": "./out/main/index.js",

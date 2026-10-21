@@ -465,6 +465,13 @@
     "voice_source": "Голосовой источник",
     "reference_audio": "Эталонное аудио",
     "reference_hint": "Используйте 5–15 секунд чистой речи.",
+    "recordGuide": {
+      "title": "Recording guide",
+      "readAloud": "Read aloud",
+      "tipsGeneric": "Quiet room, one speaker, 8–15 seconds, natural pace. Stay under 20s when you can.",
+      "tipsSomali": "Use Somali Latin spelling (c, x, q, dh, kh, sh). Quiet room, 8–15 seconds, natural pace.",
+      "tipsEgyptian": "Speak Egyptian colloquial (not formal MSA). Quiet room, 8–15 seconds, natural pace."
+    },
     "ref_usage_best_window": "Этот движок использует до {{seconds}} с — лучший фрагмент выбирается автоматически.",
     "ref_usage_head": "Этот движок использует первые {{seconds}} с этого клипа.",
     "ref_usage_long": "Длиннее рекомендуемых {{seconds}} с. Клип целиком передаётся движку.",
@@ -615,7 +622,12 @@
     "replace_reference": "Заменить образец",
     "keep_reference": "Оставить текущий образец",
     "new_reference": "Новый образец: {{name}}",
-    "replace_reference_hint": "При сохранении образец этого голоса будет заменён. Закреплённый дубль и подтверждение собственного голоса сбрасываются, так как новый клип может принадлежать другому человеку. Оставьте расшифровку пустой, чтобы новый клип был расшифрован автоматически."
+    "replace_reference_hint": "При сохранении образец этого голоса будет заменён. Закреплённый дубль и подтверждение собственного голоса сбрасываются, так как новый клип может принадлежать другому человеку. Оставьте расшифровку пустой, чтобы новый клип был расшифрован автоматически.",
+    "dialectRoute": {
+      "somaliClone": "Somali + your reference → OmniVoice cloning (Somali orthography applied).",
+      "somaliTts": "Somali text → MMS Somali engine when installed (fluent TTS; add a reference to clone).",
+      "egyptian": "Egyptian Arabic → Lahgtna Egyptian OmniVoice when installed (supports cloning)."
+    }
   },
   "designWorkspace": {
     "title": "Создать",
@@ -1651,7 +1663,7 @@
     "toast_flushed": "Сброшено — ОЗУ {{ram}}G · VRAM {{vram}}G{{unloaded}}",
     "toast_model_unloaded": "· модель выгружена",
     "toast_flush_failed": "Сброс не выполнен: {{message}}",
-    "name": "VoiceStudio",
+    "name": "TneenVoice Studio",
     "version": "v{{version}}",
     "version_dev": "v{{version}} · Разработка",
     "tagline": "Локальное клонирование голоса. Ничто не покидает вашу машину.",
