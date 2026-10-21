@@ -11,7 +11,11 @@ existing downloads under `%LOCALAPPDATA%\OmniVoice\hf_cache` and the managed
 runtime under `%APPDATA%\VoiceStudio` are reused. New dialect engines only
 download when you first need them and they are missing.
 
-## Somali / Egyptian
+## Languages
 
-- **Somali** → MMS Somali engine (auto when language is Somali).
+TneenVoice Studio supports **all** languages the engines provide (multilingual
+cloning and TTS). Somali and Egyptian Arabic get dedicated routing when you
+select them:
+
+- **Somali** (clone) → OmniVoice + orthography; (TTS only) → MMS Somali when installed.
 - **Egyptian Arabic** → Lahgtna Egyptian OmniVoice when installed.

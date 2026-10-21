@@ -1,6 +1,6 @@
 ﻿# TneenVoice Studio
 
-Local voice cloning and dialect TTS for Windows — **Somali** and **Egyptian Arabic** first-class, plus multilingual OmniVoice.
+Fully local voice cloning, TTS, dubbing, and dictation for **every language** — on your Windows PC.
 
 **Author:** Ahmed Elsayed  
 **Download (Windows):** [https://voicestudio.tneen.cloud](https://voicestudio.tneen.cloud)
@@ -8,9 +8,9 @@ Local voice cloning and dialect TTS for Windows — **Somali** and **Egyptian Ar
 ## Highlights
 
 - Desktop app with automatic local backend on launch
-- **Somali cloning** → OmniVoice + Somali orthography when you attach a reference; **Somali TTS** → Meta MMS Somali when not cloning
-- **Egyptian Arabic** → Lahgtna OmniVoice fine-tune (cloning supported when installed)
-- Recording guide shows what to say for a strong clone reference (Somali / Egyptian / more)
+- Multilingual cloning and synthesis (hundreds of languages via OmniVoice and companions)
+- **Somali** and **Egyptian Arabic** get dedicated engine routing and recording guides (extras — not limits)
+- Recording guide shows what to say for a strong clone reference in the selected language
 - Existing Hugging Face / app caches are reused (same Windows app id `com.voicestudio.desktop`)
 
 ## License

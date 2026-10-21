@@ -2,7 +2,7 @@
   "name": "voicestudio-electron",
   "version": "0.0.0-electron",
   "private": true,
-  "description": "TneenVoice Studio by Ahmed Elsayed — local Somali and Egyptian Arabic voice cloning.",
+  "description": "TneenVoice Studio by Ahmed Elsayed — local multilingual voice cloning and TTS.",
   "homepage": "https://voicestudio.tneen.cloud",
   "license": "AGPL-3.0-only",
   "author": {

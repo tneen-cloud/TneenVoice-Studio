@@ -9,8 +9,8 @@
   },
   "listing": {
     "title": "TneenVoice Studio",
-    "shortDescription": "Local voice cloning, Somali TTS, dubbing and dictation on your computer.",
-    "description": "TneenVoice Studio is a local-first desktop studio forked from VoiceStudio (AGPL-3.0) for voice cloning, Somali text-to-speech, video dubbing, transcription and real-time dictation. Audio and projects remain on the user's computer by default, with no account or API key required. Models and the managed runtime are installed only through explicit setup or model-install actions.",
+    "shortDescription": "Local multilingual voice cloning, TTS, dubbing and dictation on your computer.",
+    "description": "TneenVoice Studio is a local-first desktop studio forked from VoiceStudio (AGPL-3.0) for multilingual voice cloning, text-to-speech, video dubbing, transcription and real-time dictation — with dedicated Somali and Egyptian Arabic routing as extras. Audio and projects remain on the user's computer by default, with no account or API key required. Models and the managed runtime are installed only through explicit setup or model-install actions.",
     "keywords": [
       "voice cloning",
       "text to speech",
